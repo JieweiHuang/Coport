@@ -31,3 +31,8 @@ The functions in the **Coport** program are named to reflect their specific func
 The settings for the observer and observation frequency in the **Coport** code are both located in the `main.jl` file. After configuring all parameters, you can simply run the `main.jl` file to generate the output. 
 
 For instance, if we set the pixel density to $n\times n$, then a file named $\rm{Stokes}$ with dimensions $n\times n\times 4$ will be output. The Stokes parameters in this file will be $I=\rm{Stokes}[:,:,1],Q=\rm{Stokes}[:,:,2],U=\rm{Stokes}[:,:,3],V=\rm{Stokes}[:,:,4]$ , respectively.
+
+# Credit
+If you use our code, please cite
+'[Coport: A New Public Code for Polarized Radiative Transfer in a Covariant Framework](https://arxiv.org/abs/2407.10431)'
+by Jiewei Huang, Liheng Zheng, Minyong Guo and Bin Chen.
