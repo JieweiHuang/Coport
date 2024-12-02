@@ -4,7 +4,12 @@ include("ParallelTransport.jl");
 include("PlasmaEquation.jl");
 include("RayEqns.jl")
 
+
+
 function TraceSingleRay(ν0,a,pos,fov,npix,ii,jj)
+
+rh = 1.0+sqrt(1.0-a^2);
+
 
 function event1(u,t,integrator)
        u[1];
@@ -12,8 +17,6 @@ end
 
 
 function event!(out,u,t,integrator)
-  a=0.94;
-  rh = 1.0+sqrt(1.0-a^2);
   out[1]=1.01*rh-u[2];
   out[2]=u[2]-500.0;
 end
@@ -44,7 +47,7 @@ pt,pr,pθ,pϕ=GetRayDirection(a,pos,fov,npix,ii,jj);
 u0 = [t,r, θ, ϕ, pr, pθ];
 cache =(a,pt,pϕ);
 prob = ODEProblem(raytra,u0,(0.0,3000.0),cache);
-cb =VectorContinuousCallback(event!,affect!,nothing,2, save_positions=(true,true));
+cb =VectorContinuousCallback(event!,affect!,nothing,2,save_positions=(true,true));
 
 #Backward raytracing
 sol = solve(prob,DP5(), abstol=1e-10, reltol=1e-9,callback = cb);

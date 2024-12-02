@@ -5,15 +5,13 @@ include("PlasmaEquation.jl");
 include("RayEqns.jl")
 
 function TraceSingleRay(ν0,a,pos,fov,npix,ii,jj,str)
-
+  rh = 1.0+sqrt(1.0-a^2);
 function event1(u,t,integrator)
        u[1];
 end
 
 
 function event!(out,u,t,integrator)
-  a=0.94;
-  rh = 1.0+sqrt(1.0-a^2);
   out[1]=1.01*rh-u[2];
   out[2]=u[2]-500.0;
 end
